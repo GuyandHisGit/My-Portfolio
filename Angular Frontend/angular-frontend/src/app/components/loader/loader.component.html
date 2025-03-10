@@ -1,0 +1,5 @@
+<div class="loader-container" *ngIf="isLoading">
+    <h1 *ngIf="maingreeting" [ngClass]="{'hello-text': maingreeting === 'Hello!', 'other-text': maingreeting !== 'Hello!'}" class="fade-in-out" style="left: var(--greeting-x); top: var(--greeting-y);">
+        {{ maingreeting }}
+    </h1>
+</div>

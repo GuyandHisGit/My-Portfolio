@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <div class="logo">Your Logo</div>
+    <div class="menu-btn" (click)="toggleMenu()">
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </div>
+  </nav>
+  
+  <!-- Overlay Menu -->
+  <div class="overlay" [class.show]="menuOpen">
+    <div class="overlay-content">
+      <button class="close-btn" (click)="toggleMenu()">✕</button>
+      <ul>
+        <li><a routerLink="/" (click)="toggleMenu()">Home</a></li>
+        <li><a routerLink="/about" (click)="toggleMenu()">About</a></li>
+        <li><a routerLink="/projects" (click)="toggleMenu()">Projects</a></li>
+        <li><a routerLink="/codelabs" (click)="toggleMenu()">Codelabs</a></li>
+        <li><a routerLink="/contact" (click)="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  
