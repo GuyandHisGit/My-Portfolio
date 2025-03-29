@@ -1,22 +1,23 @@
 <nav class="navbar">
-    <div class="logo">Your Logo</div>
-    <div class="menu-btn" (click)="toggleMenu()">
-      <div class="line line1"></div>
-      <div class="line line2"></div>
-    </div>
-  </nav>
-  
-  <!-- Overlay Menu -->
-  <div class="overlay" [class.show]="menuOpen">
-    <div class="overlay-content">
-      <button class="close-btn" (click)="toggleMenu()">✕</button>
-      <ul>
-        <li><a routerLink="/" (click)="toggleMenu()">Home</a></li>
-        <li><a routerLink="/about" (click)="toggleMenu()">About</a></li>
-        <li><a routerLink="/projects" (click)="toggleMenu()">Projects</a></li>
-        <li><a routerLink="/codelabs" (click)="toggleMenu()">Codelabs</a></li>
-        <li><a routerLink="/contact" (click)="toggleMenu()">Contact</a></li>
-      </ul>
-    </div>
+  <button class="logo" routerLink="/home" (click)="closeMenu()">
+    <span class="logo-text">G</span>
+    <span class="tooltip">Home</span>
+  </button>  
+  <div class="menu-btn" [class.open]="menuOpen" (click)="toggleMenu()">
+    <div class="line"></div>
+    <div class="line"></div>
   </div>
-  
+</nav>
+
+<!-- Overlay Menu -->
+<div class="overlay" [class.show]="menuOpen">
+  <div class="overlay-content">
+    <ul>
+      <li><a routerLink="/about" [class.active]="isActive('/about')" (click)="toggleMenu()">About</a></li>
+      <li><a routerLink="/projects" [class.active]="isActive('/projects')" (click)="toggleMenu()">Projects</a></li>
+      <li><a routerLink="/codelabs" [class.active]="isActive('/codelabs')" (click)="toggleMenu()">Codelabs</a></li>
+      <li><a routerLink="/contact" [class.active]="isActive('/contact')" (click)="toggleMenu()">Contact</a></li>
+    </ul>
+  </div>
+</div>
+

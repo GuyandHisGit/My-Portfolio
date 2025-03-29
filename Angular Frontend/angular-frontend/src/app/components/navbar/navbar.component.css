@@ -1,98 +1,179 @@
-/* Navbar styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: rgba(0, 0, 0, 0.8); /* Dark and slightly transparent */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 1000;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-  }
-  
-  .menu-btn {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-  }
-  
-  .menu-btn .line {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .line1 {
-    width: 30px; /* Slightly longer */
-  }
-  
-  .line2 {
-    width: 20px; /* Slightly shorter */
-  }
-  
-  /* Overlay Menu */
-  .overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-100%);
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .overlay.show {
-    transform: translateY(0);
-  }
-  
-  .overlay-content {
-    text-align: center;
-  }
-  
-  .overlay ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .overlay ul li {
-    margin: 20px 0;
-  }
-  
-  .overlay ul li a {
-    color: white;
-    font-size: 24px;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
-  .overlay ul li a:hover {
-    color: gray;
-  }
-  
-  /* Close button */
-  .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 30px;
-    background: none;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 3000;
+}
+
+/* Logo Button */
+.logo {
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 50px;
+  font-weight: 900;
+  color: #ff0000; /* Red color */
+  text-shadow: 
+    0px 2px 0px #cc0000, 
+    0px 4px 0px #990000, 
+    0px 6px 0px #660000, 
+    0px 8px 4px rgba(0, 0, 0, 0.5); /* Creates the bulging effect */
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Logo Click Animation */
+.logo:active {
+  transform: scale(0.9); /* Slight shrink effect */
+  transition: transform 0.1s ease;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: -30px; /* Position below the logo */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; /* White text */
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show tooltip on hover */
+.logo:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Menu Button */
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  cursor: pointer;
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s ease-in-out;
+}
+
+/* Upper Line */
+.menu-btn .line:first-child {
+  width: 30px;
+  height: 1px;
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Lower Line (Smaller & Shifted Left) */
+.menu-btn .line:last-child {
+  width: 20px; /* Smaller than the upper line */
+  height: 1px;
+  background-color: white;
+  margin-left: 9.3px; /* Shifted to the left */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Menu Button Animation */
+.menu-btn.open .line:first-child {
+  transform: translateY(1px) rotate(45deg);
+}
+
+.menu-btn.open .line:last-child {
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+
+/* Overlay Menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: circle(0% at top right);
+  transition: clip-path 0.5s ease-out;
+  z-index: 2000;
+
+}
+
+.overlay.show {
+  clip-path: circle(150% at top right);
+}
+
+.overlay-content {
+  text-align: center;
+  width: 90%; /* Makes sure the content spreads across the width */
+  max-width: 400px; /* Adjust based on your design */
+  margin: auto;
+}
+
+.close-btn {
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Menu Links */
+.overlay ul li{
+  list-style: none;
+  padding: 0;
+  transform: translateY(-50px); /* Start above */
+  opacity: 0; /* Initially invisible */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out 0.2s; /* Delayed for smooth effect */
+}
+
+.overlay.show ul li{
+  transform: translateY(0); /* Slide down */
+  opacity: 1;
+}
+
+.overlay ul li a {
+  font-size: 80px; /* Bigger font size */
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.overlay ul li {
+  margin: 30px 0; /* Increase spacing between menu items */
+}
+
+/* Active Page */
+.overlay ul li a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}

@@ -37,7 +37,7 @@ export class LoaderComponent implements OnInit {
         this.setRandomPosition();
         setTimeout(() => {
           this.showOtherGreetings(index + 1);
-        }, 500);
+        }, 300);
       }, 50);
     } else {
       this.isLoading = false;

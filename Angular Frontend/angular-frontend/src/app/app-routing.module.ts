@@ -7,12 +7,13 @@ import { CodelabsComponent } from './pages/codelabs/codelabs.component';
 import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, // Default route
+  { path: 'home', component: HomeComponent }, // Home page now at "/home"
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
   { path: 'about', component: AboutComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'codelabs', component: CodelabsComponent },
   { path: 'contact', component: ContactComponent },
-  { path: '**', redirectTo: '' } // Redirect unknown routes to home
+  { path: '**', redirectTo: '/home' } // Redirect unknown routes to home
 ];
 
 @NgModule({
