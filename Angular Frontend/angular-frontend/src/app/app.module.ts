@@ -11,7 +11,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { CodelabsComponent } from './pages/codelabs/codelabs.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { LoaderComponent } from './components/loader/loader.component';
+/*import { LoaderComponent } from './components/loader/loader.component';*/
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     AboutComponent,
     ProjectsComponent,
     CodelabsComponent,
-    ContactComponent,
-    LoaderComponent
+    ContactComponent
+    /*LoaderComponent*/
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, OnInit } from '@angular/core'; 
 import * as THREE from 'three';
 
 @Component({
@@ -60,15 +60,20 @@ export class HomeComponent implements OnInit {
     this.globeContainer.nativeElement.appendChild(renderer.domElement);
 
     // Create a Sphere for the Globe
-    const geometry = new THREE.SphereGeometry(1, 32, 32);
-    const texture = new THREE.TextureLoader().load('assets/images/earth-texture.jpg'); // Make sure to add an earth texture image in this path
+    const geometry = new THREE.SphereGeometry(1, 64, 64); // Increase segments for better quality
+    const texture = new THREE.TextureLoader().load('assets/images/earth.png', (tex) => {
+      tex.wrapS = THREE.ClampToEdgeWrapping; // Allows horizontal wrapping
+      tex.wrapT = THREE.ClampToEdgeWrapping; // Allows vertical wrapping
+      tex.repeat.set(1.4, 1.4); // Adjust this to zoom in/out on the texture
+      tex.offset.set(0, -0.15); // Moves texture down
+    });
     const material = new THREE.MeshStandardMaterial({ map: texture });
     const globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
 
     // Lighting
-    const light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(5, 5, 5);
+    const light = new THREE.PointLight(0xffffff, 80, 0);
+    light.position.set(2, 2, 5);
     scene.add(light);
 
     camera.position.z = 3;
@@ -76,10 +81,16 @@ export class HomeComponent implements OnInit {
     // Animation Loop
     function animate() {
       requestAnimationFrame(animate);
-      globe.rotation.y += 0.005; // Adjust rotation speed here
+      globe.rotation.y += 0.02; // Adjust rotation speed here
       renderer.render(scene, camera);
     }
     animate();
   }
-
+  scrollToNextSection() {
+    const nextSection = document.getElementById("next-section"); // Change ID if needed
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
 }
+
