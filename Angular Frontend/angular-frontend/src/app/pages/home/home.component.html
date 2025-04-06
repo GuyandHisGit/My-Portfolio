@@ -1,12 +1,26 @@
-<div class="typewriter">
-    <p><span id="line1"></span></p>
-    <p><span id="line2"></span></p>
-    <p><span id="line3" class="highlight"></span></p>
-</div>
-<div class="globe-container">
-  <div #globeContainer></div>
-</div>
-<div class="scrolldown-container" (click)="scrollToNextSection()">
-  <div class="scrolldown"></div>
-  <span class="scroll-text">SCROLL</span>
+<div class="container" #container>
+  <!-- Home Page -->
+  <section class="home-page">
+    <div class="typewriter">
+      <p><span id="line1"></span></p>
+      <p><span id="line2"></span></p>
+      <p><span id="line3" class="highlight"></span></p>
+    </div>
+    <div class="globe-container">
+      <div #globeContainer></div>
+    </div>
+    <div class="scrolldown-container" (click)="showExtensionPage()">
+      <div class="scrolldown"></div>
+      <p class="scroll-text">SCROLL</p>
+    </div>
+  </section>
+  <!-- Extension Section -->
+  <section id="extension" class="extension-page">
+    <h1 class="tagline">
+      Obsessed with<br>
+      performance, precision,<br>
+      and pixel-perfection.
+    </h1>
+    <button (click)="navigateToCodelabs()" class="codelabs-btn">Explore Codelabs</button>
+  </section>
 </div>

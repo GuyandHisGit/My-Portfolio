@@ -119,7 +119,6 @@
   clip-path: circle(0% at top right);
   transition: clip-path 0.5s ease-out;
   z-index: 2000;
-
 }
 
 .overlay.show {

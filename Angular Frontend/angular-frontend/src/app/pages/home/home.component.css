@@ -1,55 +1,69 @@
+/* Scroll Snap Container */
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.home-page,
+.extension-page {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
 .typewriter {
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100vh;
-    padding-left: 10vw;
-    text-align: left;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+  padding-left: 10vw;
+  text-align: left;
+}
+
+.typewriter p {
+  font-size: 90px;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  width: fit-content;
+  margin: 5px 0;
+  position: relative;
+}
+
+/* Cursor effect (only on active line) */
+.typing::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 0.6s infinite;
+  color: white;
+  position: absolute;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
-  
-  .typewriter p {
-    font-size: 90px;
-    font-weight: bold;
-    color: white;
-    overflow: hidden;
-    white-space: nowrap;
-    width: fit-content;
-    margin: 5px 0;
-    position: relative;
-  }
-  
-  /* Cursor effect (only on active line) */
-  .typing::after {
-    content: '|';
-    display: inline-block;
-    animation: blink 0.6s infinite;
-    color: white;
-    position: absolute;
-  }
-  
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-  
-  .highlight {
-    color: red; /* "GUY" in red */
-  }
-  
-  .globe-container {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-    width: 300px;
-    height: 300px;
+}
+
+.highlight {
+  color: red; /* "GUY" in red */
+}
+
+.globe-container {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
 }
 
 .scrolldown-container {
   position: absolute;
-  bottom: 20px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -79,20 +93,20 @@
 
 @keyframes animate {
   0% {
-      transform-origin: top;
-      transform: scaleY(0);
+    transform-origin: top;
+    transform: scaleY(0);
   }
   50% {
-      transform-origin: top;
-      transform: scaleY(1);
+    transform-origin: top;
+    transform: scaleY(1);
   }
   51% {
-      transform-origin: bottom;
-      transform: scaleY(1);
+    transform-origin: bottom;
+    transform: scaleY(1);
   }
-  100%{
-      transform-origin: bottom;
-      transform: scaleY(0);
+  100% {
+    transform-origin: bottom;
+    transform: scaleY(0);
   }
 }
 
@@ -103,4 +117,58 @@
   font-family: Arial, sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.extension-page {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgb(206, 206, 206);
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.extension-page.active {
+  transform: translateY(0);
+}
+
+.tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 75px;
+  font-weight: 100;
+  text-align: center;
+  max-width: 90vw;
+  line-height: 1.5;
+  color: #000;
+}
+
+
+.codelabs-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background: #ff6600;
+  border: none;
+  border-radius: 30px; /* Rounded edges */
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.codelabs-btn:hover {
+  background: #cc5500;
+  transform: translateY(-2px);
+}
+
+.codelabs-btn:active {
+  transform: scale(0.95); /* Click effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
